@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Button from "../Components/Button";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter();
@@ -69,7 +69,7 @@ export default function Home() {
    * ホームに戻る処理
    */
   const handleGoToHome = () => {
-    router.push("/index");
+    router.push("/");
   };
 
   return (

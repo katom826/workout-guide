@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../Components/Button";
 import SvgButton from "../Components/SvgButton";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 type Exercise = {
   name: string;
@@ -134,7 +134,7 @@ export default function Home() {
    * ホームへ戻る処理
    */
   const handleGoToHome = () => {
-    router.push("/index");
+    router.push("/");
   };
 
   const PauseIcon = () => (
