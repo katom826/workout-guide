@@ -62,7 +62,8 @@ export default function Home() {
       audioRef.current.play().catch(() => {});
     } else {
       // 回数カウント0の時
-      const audio = new Audio("/audio/rep_change.mp3");
+      // const audio = new Audio("/audio/rep_change.mp3");
+      const audio = new Audio("/workout-guide/audio/rep_change.mp3");
       resetAudio();
       audio.play();
     }
@@ -93,8 +94,8 @@ export default function Home() {
       // 全エクササイズ完了時
       setIsCompleted(true);
       setIsRunning(false);
-
-      const audio = new Audio("/audio/clear.mp3");
+      // const audio = new Audio("/audio/clear.mp3");
+      const audio = new Audio("/workout-guide/audio/clear.mp3");
       resetAudio();
       audio.play();
     }
@@ -107,7 +108,8 @@ export default function Home() {
     setIsRunning(true);
 
     if (!audioRef.current) {
-      audioRef.current = new Audio("/audio/tick.mp3");
+      // const audio = new Audio("/audio/tick.mp3");
+      audioRef.current = new Audio("/workout-guide/audio/tick.mp3");
       audioRef.current.play().catch(() => {});
       resetAudio();
     }
