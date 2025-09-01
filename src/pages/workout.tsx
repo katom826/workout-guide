@@ -21,7 +21,7 @@ export default function Home() {
   const [isCompleted, setIsCompleted] = useState(false);
 
   const [isRest, setIsRest] = useState(false);
-  const [restDuration, setRestDuration] = useState(0);
+  const [restDuration, setRestDuration] = useState(10);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const router = useRouter();
@@ -38,6 +38,9 @@ export default function Home() {
       setCurrentSeconds(loaded[0].duration);
       setCurrentRep(loaded[0].reps);
       setIsLoaded(true);
+    } else {
+      alert("データが見つかりません。設定画面から設定してください");
+      router.push("/");
     }
 
     if (savedRest) {
@@ -162,7 +165,12 @@ export default function Home() {
   return (
     <div className={`h-screen flex items-center justify-center flex-col gap-5`}>
       {!isLoaded ? (
-        <p>読み込み中...</p>
+        <>
+          <p>読み込み中...</p>
+          <Button onClick={handleGoToHome} variant="normal" size="sm">
+            ホームに戻る
+          </Button>
+        </>
       ) : isRest ? (
         <>
           <h1 className="text-6xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">

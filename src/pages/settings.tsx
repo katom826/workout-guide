@@ -14,7 +14,7 @@ type Exercise = {
 export default function Home() {
   const router = useRouter();
   const [exercises, setExercises] = useState<Exercise[]>(
-    Array.from({ length: 3 }, () => ({ name: "", reps: 0, duration: 0 }))
+    Array.from({ length: 3 }, () => ({ name: "", reps: 5, duration: 5 }))
   );
   const [restDuration, setRestDuration] = useState(10);
 
