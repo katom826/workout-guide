@@ -1,28 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Button from "../Components/Button";
+import Button from "@/Components/Button";
 import { useRouter } from "next/router";
+import ExerciseInput from "@/Components/ExerciseInput";
+
+type Exercise = {
+  name: string;
+  reps: number;
+  duration: number;
+};
 
 export default function Home() {
   const router = useRouter();
-  const [exercises, setExercises] = useState([
-    {
-      name: "",
-      reps: 0,
-      duration: 0,
-    },
-    {
-      name: "",
-      reps: 0,
-      duration: 0,
-    },
-    {
-      name: "",
-      reps: 0,
-      duration: 0,
-    },
-  ]);
+  const [exercises, setExercises] = useState<Exercise[]>(
+    Array.from({ length: 3 }, () => ({ name: "", reps: 0, duration: 0 }))
+  );
   const [restDuration, setRestDuration] = useState(10);
 
   useEffect(() => {
@@ -40,14 +33,11 @@ export default function Home() {
 
   /**
    * 更新
-   * @param index
-   * @param key
-   * @param value
    */
   const handleChange = (
     index: number,
-    key: "name" | "reps" | "duration",
-    value: string
+    key: keyof Exercise,
+    value: string | number
   ) => {
     setExercises((prev) =>
       prev.map((exercise, i) => {
@@ -73,67 +63,34 @@ export default function Home() {
     alert("保存しました");
   };
 
-  /**
-   * ホームに戻る処理
-   */
-  const handleGoToHome = () => {
-    router.push("/");
-  };
-
   return (
     <main
-      className={`h-screen flex items-center justify-center flex-col gap-5`}
+      className={`h-screen flex items-center justify-center flex-col gap-3`}
     >
       {exercises.map((exercise, i) => (
-        <section key={i}>
-          <p>{i + 1}つ目</p>
-
-          <div>
-            <label htmlFor={`name_${i}`}>種目名</label>
-            <input
-              id={`name_${i}`}
-              type="text"
-              value={exercise.name}
-              onChange={(e) => handleChange(i, "name", e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label htmlFor={`reps_${i}`}>回数</label>
-            <input
-              id={`reps_${i}`}
-              type="number"
-              value={exercise.reps}
-              onChange={(e) => handleChange(i, "reps", e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label htmlFor={`duration_${i}`}>１回の秒数</label>
-            <input
-              id={`duration_${i}`}
-              type="number"
-              value={exercise.duration}
-              onChange={(e) => handleChange(i, "duration", e.target.value)}
-            />
-          </div>
-        </section>
+        <ExerciseInput
+          key={i}
+          index={i}
+          exercise={exercise}
+          onChange={handleChange}
+        />
       ))}
 
-      <section>
-        <label htmlFor="rest">休憩時間（秒）</label>
+      <section className="m-1 border rounded-md p-2">
+        <label htmlFor="rest">休憩秒数</label>
         <input
           id="rest"
           type="number"
           value={restDuration}
           onChange={(e) => setRestDuration(Number(e.target.value))}
+          className="m-1 border rounded-md w-15 px-1"
         />
       </section>
 
-      <Button onClick={handleSave} variant="normal" size="md">
+      <Button onClick={handleSave} variant="normal" size="sm">
         保存
       </Button>
-      <Button onClick={handleGoToHome} variant="normal" size="md">
+      <Button onClick={() => router.push("/")} variant="normal" size="sm">
         ホームに戻る
       </Button>
     </main>
