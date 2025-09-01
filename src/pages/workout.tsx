@@ -188,13 +188,13 @@ export default function Home() {
           <h1 className="text-6xl font-bold bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
             お疲れさまでした！
           </h1>
-          <Button onClick={handleGoToHome} optionalClass="mt-10 p-10 text-3xl">
+          <Button onClick={handleGoToHome} variant="normal" size="sm">
             ホームに戻る
           </Button>
         </>
       ) : (
         <>
-          <Button onClick={handleGoToHome} optionalClass="mt-10 p-10 text-3xl">
+          <Button onClick={handleGoToHome} variant="normal" size="sm">
             ホームに戻る
           </Button>
           <h1 className="text-7xl font-bold bg-linear-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">

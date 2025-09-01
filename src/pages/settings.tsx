@@ -130,16 +130,10 @@ export default function Home() {
         />
       </section>
 
-      <Button
-        onClick={handleSave}
-        optionalClass="text-6xl font-bold bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent"
-      >
+      <Button onClick={handleSave} variant="normal" size="md">
         保存
       </Button>
-      <Button
-        onClick={handleGoToHome}
-        optionalClass="text-6xl font-bold bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent"
-      >
+      <Button onClick={handleGoToHome} variant="normal" size="md">
         ホームに戻る
       </Button>
     </main>
