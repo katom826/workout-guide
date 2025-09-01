@@ -65,7 +65,7 @@ export default function Home() {
 
   return (
     <main
-      className={`h-screen flex items-center justify-center flex-col gap-3`}
+      className={`h-[100dvh] flex items-center justify-center flex-col gap-3`}
     >
       {exercises.map((exercise, i) => (
         <ExerciseInput

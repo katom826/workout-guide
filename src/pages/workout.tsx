@@ -163,7 +163,9 @@ export default function Home() {
   const StartIcon = () => <path d="M320-200v-560l440 280-440 280Z" />;
 
   return (
-    <div className={`h-screen flex items-center justify-center flex-col gap-5`}>
+    <div
+      className={`h-[100dvh] flex items-center justify-center flex-col gap-5`}
+    >
       {!isLoaded ? (
         <>
           <p>読み込み中...</p>

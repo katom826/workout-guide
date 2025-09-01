@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div>
-      <main className="h-screen flex flex-col justify-center items-center gap-10">
+      <main className="h-[100dvh] flex flex-col justify-center items-center gap-10">
         <h1 className={gradientClass}>筋トレガイド</h1>
         <div className="flex flex-col gap-5 items-center">
           <Button
