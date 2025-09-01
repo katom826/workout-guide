@@ -23,11 +23,18 @@ export default function Home() {
       duration: 0,
     },
   ]);
+  const [restDuration, setRestDuration] = useState(10);
 
   useEffect(() => {
-    const saved = localStorage.getItem("exercises");
-    if (saved) {
-      setExercises(JSON.parse(saved));
+    const savedExercises = localStorage.getItem("exercises");
+    const savedRest = localStorage.getItem("restDuration");
+
+    if (savedExercises) {
+      setExercises(JSON.parse(savedExercises));
+    }
+
+    if (savedRest) {
+      setRestDuration(JSON.parse(savedRest));
     }
   }, []);
 
@@ -62,6 +69,7 @@ export default function Home() {
    */
   const handleSave = () => {
     localStorage.setItem("exercises", JSON.stringify(exercises));
+    localStorage.setItem("restDuration", JSON.stringify(restDuration));
     alert("保存しました");
   };
 
@@ -94,7 +102,7 @@ export default function Home() {
             <label htmlFor={`reps_${i}`}>回数</label>
             <input
               id={`reps_${i}`}
-              type="text"
+              type="number"
               value={exercise.reps}
               onChange={(e) => handleChange(i, "reps", e.target.value)}
             />
@@ -104,13 +112,23 @@ export default function Home() {
             <label htmlFor={`duration_${i}`}>１回の秒数</label>
             <input
               id={`duration_${i}`}
-              type="text"
+              type="number"
               value={exercise.duration}
               onChange={(e) => handleChange(i, "duration", e.target.value)}
             />
           </div>
         </section>
       ))}
+
+      <section>
+        <label htmlFor="rest">休憩時間（秒）</label>
+        <input
+          id="rest"
+          type="number"
+          value={restDuration}
+          onChange={(e) => setRestDuration(Number(e.target.value))}
+        />
+      </section>
 
       <Button
         onClick={handleSave}
