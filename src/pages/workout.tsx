@@ -169,7 +169,7 @@ export default function Home() {
             休憩
           </h1>
           <h2 className="text-4xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
-            次： {exercises[currentExerciseIndex + 1].name}
+            NEXT {exercises[currentExerciseIndex + 1].name}
           </h2>
           <p className="text-6xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
             {currentSeconds} / {restDuration} 秒

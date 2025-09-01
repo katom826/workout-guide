@@ -38,7 +38,7 @@ export default function ExerciseInput({ index, exercise, onChange }: Props) {
   ];
 
   return (
-    <section key={index} className="border rounded-md border-blue-500 p-2">
+    <section key={index} className="p-2">
       <p>No. {index + 1}</p>
       <div className="grid grid-cols-[2fr_1fr_1fr] gap-2">
         {fields.map(({ key, label, type }) => (

@@ -76,7 +76,7 @@ export default function Home() {
         />
       ))}
 
-      <section className="m-1 border rounded-md p-2">
+      <section className="p-2 flex gap-1 items-center">
         <label htmlFor="rest">休憩秒数</label>
         <input
           id="rest"
